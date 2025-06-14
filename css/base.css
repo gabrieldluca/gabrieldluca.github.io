@@ -1,0 +1,24 @@
+@keyframes bouncesm {
+    0% {
+        transform:translateY(-2px)
+    }
+
+    50% {
+        transform:translateY(-4px)
+    }
+
+    100% {
+        transform:translateY(-2px)
+    }
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    height: 100vh !important;
+	cursor: url('../images/cursor/arrow-pointer.svg') 0 0, auto;
+}
+
+p, span, .text-element, h1, h2, h3, h4, h5, h6 {
+	cursor: url('../images/cursor/beam.svg') 0 0, auto;
+}
