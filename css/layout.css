@@ -1,0 +1,24 @@
+.sidebar {
+    width: 30.9%;
+    background-color: #ffffff;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.content {
+    padding: 2rem;
+    margin-left: 30.9%;
+}
+
+.content article {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 0rem;
+}
+
+.content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
