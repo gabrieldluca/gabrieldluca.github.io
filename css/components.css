@@ -1,0 +1,89 @@
+/* Card */
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    width: 18vw;
+    padding-top: 1.0rem;
+    padding-left: 2.0rem;
+    padding-bottom: 1.0rem;
+    aspect-ratio: 4.0/1;
+}
+
+.card-inner-layout {
+    background-color: #000000;
+    opacity: 7.5%;
+    width: 1%;
+    aspect-ratio: 1/18;
+    border-radius: 8px;
+}
+
+.card-horizontal-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    gap: 1.5rem;
+}
+
+.card-vertical-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+    gap: 0.3rem;
+}
+
+.card-institution-name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    font-size: 0.85rem;
+}
+
+.card-field-of-study {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #7B7B7B;
+    font-size: 0.85rem;
+}
+
+.card-status-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.0rem;
+}
+
+.card-dropout-status {
+    background-color: #FF3F3F40;
+    margin-top: 0.3rem;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 7.5%;
+    padding-bottom: 7.5%;
+    border-radius: 8px;
+}
+
+.card-dropout-status span {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #D51515;
+    font-size: 0.7rem;
+}
+
+.card-completed-status {
+    background-color: #0FC97040;
+    margin-top: 0.3rem;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 7.5%;
+    padding-bottom: 7.5%;
+    border-radius: 8px;
+}
+
+.card-completed-status span {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #017F57;
+    font-size: 0.7rem;
+}
