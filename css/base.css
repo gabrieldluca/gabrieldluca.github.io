@@ -12,3 +12,8 @@ p, span, .text-element, h1, h2, h3, h4, h5, h6 {
 ::selection {
     background-color: #915CF726;
 }
+
+.hyperlink {
+    text-decoration: none; 
+    color: inherit;
+}

@@ -47,6 +47,12 @@
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 8%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.025);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar h1 {

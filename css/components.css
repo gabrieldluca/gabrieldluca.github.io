@@ -8,6 +8,12 @@
     padding-left: 2.0rem;
     padding-bottom: 1.0rem;
     aspect-ratio: 4.0/1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
 }
 
 .card-inner-layout {
@@ -50,17 +56,17 @@
 .card-status-container {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.0rem;
 }
 
 .card-dropout-status {
     background-color: #FF3F3F40;
     margin-top: 0.3rem;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 7.5%;
-    padding-bottom: 7.5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
     border-radius: 8px;
 }
 
@@ -74,10 +80,10 @@
 .card-completed-status {
     background-color: #0FC97040;
     margin-top: 0.3rem;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 7.5%;
-    padding-bottom: 7.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
     border-radius: 8px;
 }
 
@@ -86,4 +92,12 @@
     font-weight: bold;
     color: #017F57;
     font-size: 0.7rem;
+}
+
+.card-period {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #7B7B7B;
+    padding-top: 2.5%;
+    font-size: 0.8rem;
+    width: 9rem;
 }
