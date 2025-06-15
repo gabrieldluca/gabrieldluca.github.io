@@ -8,3 +8,7 @@ body {
 p, span, .text-element, h1, h2, h3, h4, h5, h6 {
 	cursor: url('../images/cursor/beam.svg') 0 0, auto;
 }
+
+::selection {
+    background-color: #915CF726;
+}
