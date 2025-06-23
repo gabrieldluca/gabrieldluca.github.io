@@ -1,7 +1,7 @@
 /* Sidebar */
 
 .sidebar {
-    width: 30.9%;
+    width: clamp(22.5rem, 30.9%, 32.5rem);
     background-color: #ffffff;
     position: fixed;
     height: 100vh;
@@ -57,7 +57,7 @@
 
 .sidebar h1 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: bold;
     color: #000000;
     margin-top: 1.5rem;
@@ -103,14 +103,16 @@
 /* Content */
 
 .content {
-    padding: 2rem;
-    margin-left: 30.9%;
+    padding-left: clamp(1rem, 12vw, 11rem);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-right: 2rem;
+    margin-left: clamp(24rem, 30.9%, 35rem);
 }
 
 .content article {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-bottom: 0rem;
+    padding-left: -4rem;
+    margin-left: -4rem;
 }
 
 .comma-horizontal-container {
@@ -171,13 +173,12 @@
     align-items: flex-start;
     max-width: 100%;
     padding-top: 2.0rem;
-    gap: 5.0rem;
+    gap: clamp(2.0rem, 10%, 5.0rem);
 }
 
 .left-column-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     max-width: 100%;
     gap: 2.0rem;
 }
@@ -185,7 +186,6 @@
 .right-column-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     max-width: 100%;
     margin-top: 3%;
     gap: 1.5rem;
@@ -216,21 +216,46 @@
 }
 
 .steve-quote {
-    width: 70%;
+    width: clamp(17.5rem, 90%, 21rem);
     aspect-ratio: 3/1;
     margin-top: 10%;
     object-fit: contain;
-    border-radius: 8%;
 }
 
 /* Layout Responsiveness */
 
-@media (max-width: 1000px) {
+@media (max-width: 1125px) {
     .sidebar {
         display: none;
     }
 
     .content {
+        padding-left: 6rem;
         margin-left: 0;
+    }
+
+    .content article {
+        max-width: 800px;
+        margin: 0;
+        padding-bottom: 0rem;
+    }
+
+    .steve-quote {
+        width: clamp(15rem, 95%, 19rem);
+    }
+}
+
+@media (max-width: 755px) {
+    .content-horizontal-container {
+        flex-direction: column;
+    }
+
+    .content {
+        padding-left: 4rem;
+        margin-left: 0;
+    }
+
+    .steve-quote {
+        width: clamp(12.5rem, 17.5rem, 22.5rem);
     }
 }
