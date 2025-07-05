@@ -200,10 +200,12 @@
     align-items: flex-start;
     max-width: 100%;
     gap: 0.4rem;
+    cursor: pointer;
 }
 
 .awards-container p {
     line-height: 1.0em;
+    cursor: pointer;
 
 }
 
