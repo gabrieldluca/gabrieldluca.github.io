@@ -133,8 +133,8 @@
 .horizontal-timeline .timeline {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 850px;
+  margin: 0;
 }
 
 .horizontal-timeline .events-wrapper {
@@ -360,6 +360,7 @@
 .horizontal-timeline .events-content {
   position: relative;
   width: 100%;
+  max-width: 850px;
   background-color: #3C3C3F66;
   border-radius: 16px;
   overflow: hidden;
@@ -376,7 +377,7 @@
   width: 100%;
   left: 0;
   top: 0;
-  padding: 1em 1.5em 1em 1.5em;
+  padding: 16px 24px 16px 24px;
   -webkit-transform: translateX(-100%);
   -moz-transform: translateX(-100%);
   -ms-transform: translateX(-100%);
@@ -425,9 +426,9 @@
   margin: 0 auto;
 }
   
-.horizontal-timeline .events-content h2 {
+.horizontal-timeline .events-content .content-horizontal-container h2 {
   font-weight: 550;
-  font-size: 0.66rem;
+  font-size: clamp(1.3rem, 1vw, 1.6rem);
   color: #FFFFFF;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   padding: 0;
