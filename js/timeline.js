@@ -26,10 +26,29 @@ jQuery(document).ready(function($) {
 			});
 
 			updateSlide(components, timelineTotWidth, 'prev');
-			updateFilling($('.selected'), components.fillingLine, timelineTotWidth);
-
+			
+			// Ensure first event is selected if none selected
 			var selectedEvent = components.timelineEvents.filter('.selected');
+			if (selectedEvent.length === 0) {
+				selectedEvent = components.timelineEvents.first();
+				selectedEvent.addClass('selected').removeClass('future-event');
+			}
+			
+			updateFilling(selectedEvent, components.fillingLine, timelineTotWidth);
 			updateOlderEvents(selectedEvent);
+			
+			// Ensure the selected content is visible
+			var selectedContent = components.eventsContent.find('[data-date="' + selectedEvent.data('date') + '"]');
+			if (selectedContent.length > 0) {
+				selectedContent.addClass('selected').css({
+					'opacity': 1,
+					'transform': 'translateX(0)',
+					'pointer-events': 'auto'
+				});
+				
+				var initialHeight = selectedContent.outerHeight(true);
+				components.eventsContent.css('height', initialHeight + 'px');
+			}
 
 			bindEventHandlers(components, timelineTotWidth, timeline);
 		});
@@ -131,19 +150,16 @@ jQuery(document).ready(function($) {
 	}
 
 	function showNewContent(components, timelineTotWidth, direction) {
-		var visibleContent = components.eventsContent.find('.selected');
-		var newContent = direction === 'next' ? visibleContent.next() : visibleContent.prev();
+		var selectedEvent = components.eventsWrapper.find('.selected');
+		var newEvent = direction === 'next'
+			? selectedEvent.parent('li').next('li').children('a')
+			: selectedEvent.parent('li').prev('li').children('a');
 
-		if (newContent.length > 0) {
-			var selectedDate = components.eventsWrapper.find('.selected');
-			var newEvent = direction === 'next'
-				? selectedDate.parent('li').next('li').children('a')
-				: selectedDate.parent('li').prev('li').children('a');
-
+		if (newEvent.length > 0) {
 			updateFilling(newEvent, components.fillingLine, timelineTotWidth);
 			updateVisibleContent(newEvent, components.eventsContent);
-			newEvent.addClass('selected');
-			selectedDate.removeClass('selected');
+			newEvent.addClass('selected').removeClass('future-event');
+			selectedEvent.removeClass('selected');
 			updateOlderEvents(newEvent);
 			updateTimelinePosition(direction, newEvent, components, timelineTotWidth);
 		}
@@ -230,24 +246,85 @@ jQuery(document).ready(function($) {
 		return totalWidth;
 	}
 
+	function finishOngoingAnimations(eventsContent) {
+		eventsContent.removeClass('enter-right enter-left leave-right leave-left');
+		eventsContent.find('li').removeClass('entering leaving enter-left enter-right leave-left leave-right');
+		eventsContent.find('li').not('.selected').css({
+			opacity: 0,
+		});
+	}
+
 	function updateVisibleContent(event, eventsContent) {
-		var eventDate = event.data('date');
-		var visibleContent = eventsContent.find('.selected');
-		var selectedContent = eventsContent.find('[data-date="' + eventDate + '"]');
-
-		var classEntering, classLeaving;
-		if (selectedContent.index() > visibleContent.index()) {
-			classEntering = 'selected enter-right';
-			classLeaving = 'leave-left';
-		} else {
-			classEntering = 'selected enter-left';
-			classLeaving = 'leave-right';
+		finishOngoingAnimations(eventsContent);
+		const timeline = eventsContent.closest('.horizontal-timeline');
+		timeline.addClass('animating');
+		const eventDate = event.data('date');
+		const currentCard = eventsContent.find('.selected');
+		const newCard = eventsContent.find('[data-date="' + eventDate + '"]');
+		if (currentCard.is(newCard)) {
+			timeline.removeClass('animating');
+			return;
 		}
+		const animationClasses = getAnimationClasses(currentCard, newCard);
+		setContainerHeight(eventsContent, currentCard);
+		startTransition(eventsContent, currentCard, newCard, animationClasses, timeline);
+	}
 
-		selectedContent.attr('class', classEntering);
-		visibleContent.attr('class', classLeaving).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function() {
-			visibleContent.removeClass('leave-right leave-left');
-			selectedContent.removeClass('enter-left enter-right');
+	function getAnimationClasses(currentCard, newCard) {
+		const isMovingForward = newCard.index() > currentCard.index();
+		return {
+			enter: isMovingForward ? 'enter-right' : 'enter-left',
+			leave: isMovingForward ? 'leave-left' : 'leave-right'
+		};
+	}
+
+	function setContainerHeight(container, card) {
+		const height = card.outerHeight(true);
+		container.css('height', height + 'px');
+	}
+
+	function startTransition(container, currentCard, newCard, classes, timeline) {
+		setTimeout(() => {
+			setTimeout(() => {
+				container.addClass(classes.leave);
+			}, 50);
+			container.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', () => {
+				hideCard(currentCard);
+				container.removeClass(classes.leave);
+				prepareNewCard(newCard);
+				startEnterAnimation(container, newCard, classes.enter, timeline);
+			});
+		}, 100);
+	}
+
+	function hideCard(card) {
+		card.removeClass('selected').css({
+			'opacity': 0,
+			'pointer-events': 'none'
+		});
+	}
+
+	function prepareNewCard(card) {
+		card.removeClass('enter-left enter-right leave-left leave-right selected').css({
+			'display': '',
+			'opacity': 1,
+			'will-change': 'opacity',
+			'pointer-events': 'auto'
+		});
+	}
+
+	function startEnterAnimation(container, newCard, enterClass, timeline) {
+		container.addClass(enterClass);
+		setTimeout(() => {
+			container.css('opacity', '1');
+		}, 100);
+		const newHeight = newCard.outerHeight(true);
+		container.css('height', newHeight + 'px');
+		container.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', () => {
+			container.removeClass(enterClass);
+			newCard.addClass('selected');
+			isAnimating = false;
+			if (timeline) timeline.removeClass('animating');
 		});
 	}
 
@@ -307,10 +384,10 @@ jQuery(document).ready(function($) {
 		}
 
 		return (
-			top < window.pageYOffset + window.innerHeight &&
-			left < window.pageXOffset + window.innerWidth &&
-			top + height > window.pageYOffset &&
-			left + width > window.pageXOffset
+			top < window.scrollY + window.innerHeight &&
+			left < window.scrollX + window.innerWidth &&
+			top + height > window.scrollY &&
+			left + width > window.scrollX
 		);
 	}
 
