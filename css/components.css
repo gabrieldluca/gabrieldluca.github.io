@@ -211,6 +211,7 @@
   padding-bottom: 15px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #FFFFFF;
+  cursor: pointer;
   
   /* [Safari Fix] Text flickers while timeline translates */
   -webkit-transform: translateZ(0);
@@ -262,6 +263,10 @@
   outline-color: #000000;
 }
 
+.horizontal-timeline .events a.older-event {
+    color: #4E4B59;
+}
+
 .horizontal-timeline .events a.older-event::after {
   background-color: #915CF7;
   outline-color: #000000;
@@ -270,6 +275,20 @@
 .horizontal-timeline .events a.older-event:hover::after {
   background-color: #5F27CD;
   outline-color: #000000;
+}
+
+.horizontal-timeline .events a.future-event {
+  color: #4E4B59;
+}
+
+.horizontal-timeline .events a.future-event::after {
+  background-color: #4E4B59;
+  outline-color: #000000;
+}
+
+.horizontal-timeline .events a.future-event:hover::after {
+    background-color: #5F27CD;
+    outline-color: #000000;
 }
 
 @media only screen and (min-width: 1100px) {
@@ -454,7 +473,7 @@
 }
 
 .horizontal-timeline .events-content p {
-  font-size: 0.3rem;
+  font-size: 0.clamp(0.9rem, 1rem, 1.1rem);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #979797;
 }
@@ -471,7 +490,7 @@
     font-size: 1rem;
   }
   .horizontal-timeline .events-content p {
-    font-size: 0.9rem;
+    font-size: 0.clamp(0.9rem, 1rem, 1.1rem);
   }
 }
 

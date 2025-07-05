@@ -254,7 +254,7 @@
 }
 
 @media (max-width: 755px) {
-    .content-horizontal-container {
+    #left-column-content-horizontal-container {
         flex-direction: column;
     }
 

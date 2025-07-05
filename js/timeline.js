@@ -13,8 +13,23 @@ jQuery(document).ready(function($) {
 			var timelineTotWidth = setTimelineWidth(components, eventsMinDistance);
 			timeline.addClass('loaded');
 
-			updateSlide(components, timelineTotWidth, 'next');
+			components.timelineEvents.each(function() {
+				var eventDate = $(this).data('date');
+				if (!eventDate) return;
+				var parts = eventDate.split('/');
+				var eventTime = new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+				var now = new Date();
+				now.setHours(0,0,0,0);
+				if (eventTime > now.getTime()) {
+					$(this).addClass('future-event');
+				}
+			});
+
+			updateSlide(components, timelineTotWidth, 'prev');
 			updateFilling($('.selected'), components.fillingLine, timelineTotWidth);
+
+			var selectedEvent = components.timelineEvents.filter('.selected');
+			updateOlderEvents(selectedEvent);
 
 			bindEventHandlers(components, timelineTotWidth, timeline);
 		});
@@ -51,7 +66,8 @@ jQuery(document).ready(function($) {
 			}
 			
 			components.timelineEvents.removeClass('selected');
-			$(this).addClass('selected');
+			$(this).addClass('selected').removeClass('future-event');
+			$(this).removeClass('older-event');
 			updateOlderEvents($(this));
 			updateFilling($(this), components.fillingLine, timelineTotWidth);
 			updateVisibleContent($(this), components.eventsContent);
@@ -76,11 +92,21 @@ jQuery(document).ready(function($) {
 		});
 
 		$(window).on('resize', function() {
-			var currentTranslateValue = getTranslateValue(components.eventsWrapper);
+			// Recalculate event positions and timeline width
+			setDatePosition(components, eventsMinDistance);
+			var timelineTotWidth = setTimelineWidth(components, eventsMinDistance);
+
+			// Reset translation to 0 (leftmost)
+			setTransformValue(components.eventsWrapper.get(0), 'translateX', '0px');
+
+			// Update filling line and navigation arrows
+			var selectedEvent = components.eventsWrapper.find('.selected');
+			updateFilling(selectedEvent, components.fillingLine, timelineTotWidth);
+
+			var currentTranslateValue = 0;
 			var timelineWrapperWidth = components.timelineWrapper.width();
 			var eventsWrapperWidth = components.eventsWrapper.width();
 			var totWidth = timelineWrapperWidth - eventsWrapperWidth;
-			
 			updateNavigationArrows(components, currentTranslateValue, totWidth);
 		});
 	}
@@ -192,7 +218,9 @@ jQuery(document).ready(function($) {
 	function setTimelineWidth(components, width) {
 		var totalEvents = components.timelineEvents.length;
 		var fixedSpacing = 200;
-		var calculatedWidth = (totalEvents - 1) * fixedSpacing + width;
+		var leftPadding = 50;
+		var rightPadding = 50;
+		var calculatedWidth = leftPadding + (totalEvents - 1) * fixedSpacing + rightPadding;
 		var timelineWrapperWidth = components.timelineWrapper.width();
 		var totalWidth = Math.max(calculatedWidth, timelineWrapperWidth);
 
@@ -224,7 +252,13 @@ jQuery(document).ready(function($) {
 	}
 
 	function updateOlderEvents(event) {
-		event.parent('li').prevAll('li').children('a').addClass('older-event').end().end().nextAll('li').children('a').removeClass('older-event');
+		event.parent('li').prevAll('li').children('a')
+			.addClass('older-event')
+			.removeClass('future-event')
+			.end().end()
+			.nextAll('li').children('a')
+			.removeClass('older-event')
+			.addClass('future-event');
 	}
 
 	function getTranslateValue(timeline) {
