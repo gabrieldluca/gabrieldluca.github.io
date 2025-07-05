@@ -64,9 +64,9 @@
     margin-top: 0.3rem;
     padding-left: 7.5%;
     padding-right: 7.5%;
-    padding-top: 2.5%;
+    padding-top: 2%;
     padding-bottom: 2.5%;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .card-dropout-status span {
@@ -81,9 +81,9 @@
     margin-top: 0.3rem;
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 2.5%;
+    padding-top: 2%;
     padding-bottom: 2.5%;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .card-completed-status span {
@@ -96,7 +96,7 @@
 .card-period {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #A2A2A2;
-    font-weight: bold;
+    font-weight: 550;
     padding-top: 2.5%;
     font-size: 0.8rem;
     width: 9rem;
@@ -456,11 +456,6 @@
   font-size: 0.3rem;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #979797;
-}
-
-.horizontal-timeline .events-content p strong {
-  font-weight: bold;
-  color: #FFFFFF;
 }
 
 .horizontal-timeline .events-content em, .horizontal-timeline .events-content p {
