@@ -201,6 +201,11 @@
     max-width: 100%;
     gap: 0.4rem;
     cursor: pointer;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.awards-container:hover {
+    transform: translateX(2px) scale(1.025);
 }
 
 .awards-container p {
