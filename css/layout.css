@@ -113,6 +113,7 @@
 .content article {
     padding-left: -4rem;
     margin-left: -4rem;
+    margin-right: 4rem;
 }
 
 .comma-horizontal-container {
@@ -145,7 +146,7 @@
 .content h2 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
-    font-weight: bold;
+    font-weight: 550;
     color: #FFFFFF;
     margin-top: 4.0rem;
     text-align: left;
