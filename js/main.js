@@ -17,4 +17,14 @@
 			}
 		});
 	});
+
+    // Force Safari to recalculate layout on resize
+    window.addEventListener('resize', function() {
+        var el = document.querySelector('.sidebar-horizontal-container');
+        if (el) {
+       	    el.style.display = 'none';
+       	    el.offsetHeight;
+       	    el.style.display = '';
+        }
+   });
 })();
