@@ -102,6 +102,18 @@
     width: 9rem;
 }
 
+/* Responsiveness – Phones (Portrait) */
+
+@media (max-width: 430px) {
+  .card {
+    padding-right: 2.0rem;
+  }
+
+  .card-horizontal-container {
+    gap: 2rem
+  }
+}
+
 /* Timeline */
 
 .horizontal-timeline {
@@ -569,13 +581,4 @@
 .horizontal-timeline.animating .timeline-navigation a {
   pointer-events: none !important;
   cursor: not-allowed;
-}
-
-/* Disable transitions during resize for better performance */
-.horizontal-timeline.resizing * {
-  transition: none !important;
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  animation: none !important;
-  -webkit-animation: none !important;
 }

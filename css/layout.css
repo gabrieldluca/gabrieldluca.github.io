@@ -156,7 +156,7 @@
 .content h2 {
     font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
-    font-weight: bold;
+    font-weight: 550;
     color: #FFFFFF;
     margin-top: 4.0rem;
     text-align: left;
@@ -462,5 +462,21 @@
         margin-top: 0;
         margin-bottom: 2rem;
         width: clamp(12.5rem, 17.5rem, 22.5rem);
+    }
+}
+
+/* Responsiveness – Phones (Portrait) */
+@media (max-width: 430px) {
+    .left-column-container {
+        min-width: 100%;
+    }
+
+    .right-column-container {
+        min-width: 100%;
+    }
+
+    .steve-quote {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
