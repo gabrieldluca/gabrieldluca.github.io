@@ -43,13 +43,13 @@
     font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-weight: bold;
     color: #000000;
-    font-size: clamp(0.6rem, 0.85rem, 1rem);
+    font-size: clamp(0.8rem, 0.85rem, 0.9rem);
 }
 
 .card-field-of-study {
     font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     color: #7B7B7B;
-    font-size: clamp(0.6rem, 0.85rem, 1rem);
+    font-size: clamp(0.8rem, 0.85rem, 0.9rem);
 }
 
 .card-status-container {
@@ -568,7 +568,7 @@
 }
 
 .modal-image {
-	max-width: 60vw;
+	max-width: 75vw;
 	max-height: 90vh;
 	width: auto;
 	height: auto;
@@ -581,4 +581,12 @@
 .horizontal-timeline.animating .timeline-navigation a {
   pointer-events: none !important;
   cursor: not-allowed;
+}
+
+/* Responsiveness – Mobile Devices */
+@media (max-width: 667px) {
+  .modal-image {
+    max-width: 85Xvw;
+    max-height: 90vh;
+  }
 }
