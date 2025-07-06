@@ -170,7 +170,7 @@
 
 .content p {
     font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
-    font-size: clamp(0.85rem, 0.9rem, 95rem);
+    font-size: clamp(0.85rem, 0.9rem, 0.95rem);
     line-height: 1.6;
 }
 
@@ -399,8 +399,8 @@
     }
 
     .sidebar-icon {
-        width: clamp(1.5rem, 4vw, 2rem);
-        height: clamp(1.5rem, 4vw, 2rem);
+        width: clamp(1.75rem, 4vw, 2rem);
+        height: clamp(1.75rem, 4vw, 2rem);
         aspect-ratio: 1/1;
         object-fit: contain;
     }
@@ -419,7 +419,7 @@
 }
 
 /* Responsiveness – Mobile Devices */
-@media (max-width: 650px) {
+@media (max-width: 667px) {
     #left-column-content-horizontal-container {
         flex-direction: column;
     }
