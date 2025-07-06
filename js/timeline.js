@@ -100,12 +100,6 @@ jQuery(document).ready(function($) {
 			if (isMobile()) showNewContent(components, timelineTotWidth, 'prev');
 		});
 
-		if (isMobile()) {
-			components.eventsContent.on('touchmove', function(e) {
-				e.preventDefault();
-			});
-		}
-
 		$(document).keyup(function(event) {
 			if (event.which === 37 && elementInViewport(timeline.get(0))) {
 				showNewContent(components, timelineTotWidth, 'prev');
@@ -208,7 +202,7 @@ jQuery(document).ready(function($) {
 
 	function setDatePosition(components, min) {
 		var totalEvents = components.timelineEvents.length;
-		var fixedSpacing = 200;
+		var fixedSpacing = isMobile() ? 120 : 200;
 		var leftPadding = 50;
 		var positions = [];
 
@@ -359,6 +353,6 @@ jQuery(document).ready(function($) {
 	}
 
 	function isMobile() {
-		return window.matchMedia('(max-width: 850px)').matches;
+		return window.matchMedia('(max-width: 650px)').matches;
 	}
 });

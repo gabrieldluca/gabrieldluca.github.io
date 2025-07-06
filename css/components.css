@@ -370,6 +370,13 @@
   overflow: visible;
   margin-bottom: 2rem;
   min-height: 100px;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.horizontal-timeline .events-content::-webkit-scrollbar {
+  display: none;
 }
 
 .horizontal-timeline .events-content li {
