@@ -202,7 +202,7 @@ jQuery(document).ready(function($) {
 
 	function setDatePosition(components, min) {
 		var totalEvents = components.timelineEvents.length;
-		var fixedSpacing = isMobile() ? 120 : 200;
+		var fixedSpacing = isMobile() ? 120 : 188;
 		var leftPadding = 50;
 		var positions = [];
 
@@ -217,9 +217,9 @@ jQuery(document).ready(function($) {
 
 	function setTimelineWidth(components, width) {
 		var totalEvents = components.timelineEvents.length;
-		var fixedSpacing = 200;
+		var fixedSpacing = isMobile() ? 120 : 188;
 		var leftPadding = 50;
-		var rightPadding = 50;
+		var rightPadding = 80;
 		var calculatedWidth = leftPadding + (totalEvents - 1) * fixedSpacing + rightPadding;
 		var timelineWrapperWidth = components.timelineWrapper.width();
 		var totalWidth = Math.max(calculatedWidth, timelineWrapperWidth);
