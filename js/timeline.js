@@ -127,6 +127,13 @@ jQuery(document).ready(function($) {
 			var eventsWrapperWidth = components.eventsWrapper.width();
 			var totWidth = timelineWrapperWidth - eventsWrapperWidth;
 			updateNavigationArrows(components, currentTranslateValue, totWidth);
+
+			// Recalculate the height for the selected card
+			var eventsContent = $('.horizontal-timeline .events-content');
+			var selectedCard = eventsContent.find('li.selected');
+			if (selectedCard.length) {
+				eventsContent.height(selectedCard.outerHeight(true));
+			}
 		});
 	}
 
@@ -246,86 +253,30 @@ jQuery(document).ready(function($) {
 		return totalWidth;
 	}
 
-	function finishOngoingAnimations(eventsContent) {
-		eventsContent.removeClass('enter-right enter-left leave-right leave-left');
-		eventsContent.find('li').removeClass('entering leaving enter-left enter-right leave-left leave-right');
-		eventsContent.find('li').not('.selected').css({
-			opacity: 0,
-		});
-	}
-
 	function updateVisibleContent(event, eventsContent) {
-		finishOngoingAnimations(eventsContent);
-		const timeline = eventsContent.closest('.horizontal-timeline');
-		timeline.addClass('animating');
+		eventsContent.find('li').removeClass('entering leaving');
 		const eventDate = event.data('date');
 		const currentCard = eventsContent.find('.selected');
 		const newCard = eventsContent.find('[data-date="' + eventDate + '"]');
-		if (currentCard.is(newCard)) {
-			timeline.removeClass('animating');
-			return;
-		}
-		const animationClasses = getAnimationClasses(currentCard, newCard);
-		setContainerHeight(eventsContent, currentCard);
-		startTransition(eventsContent, currentCard, newCard, animationClasses, timeline);
-	}
-
-	function getAnimationClasses(currentCard, newCard) {
-		const isMovingForward = newCard.index() > currentCard.index();
-		return {
-			enter: isMovingForward ? 'enter-right' : 'enter-left',
-			leave: isMovingForward ? 'leave-left' : 'leave-right'
-		};
-	}
-
-	function setContainerHeight(container, card) {
-		const height = card.outerHeight(true);
-		container.css('height', height + 'px');
-	}
-
-	function startTransition(container, currentCard, newCard, classes, timeline) {
+		if (currentCard.is(newCard)) return;
+		
+		// Add animating class to prevent interactions during animation
+		eventsContent.closest('.horizontal-timeline').addClass('animating');
+		
+		currentCard.removeClass('selected').addClass('leaving');
+		newCard[0].style.opacity = '';
+		newCard[0].style.pointerEvents = '';
+		newCard.addClass('entering');
+		
 		setTimeout(() => {
-			setTimeout(() => {
-				container.addClass(classes.leave);
-			}, 50);
-			container.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', () => {
-				hideCard(currentCard);
-				container.removeClass(classes.leave);
-				prepareNewCard(newCard);
-				startEnterAnimation(container, newCard, classes.enter, timeline);
-			});
-		}, 100);
-	}
-
-	function hideCard(card) {
-		card.removeClass('selected').css({
-			'opacity': 0,
-			'pointer-events': 'none'
-		});
-	}
-
-	function prepareNewCard(card) {
-		card.removeClass('enter-left enter-right leave-left leave-right selected').css({
-			'display': '',
-			'opacity': 1,
-			'will-change': 'opacity',
-			'pointer-events': 'auto'
-		});
-	}
-
-	function startEnterAnimation(container, newCard, enterClass, timeline) {
-		container.addClass(enterClass);
-		setTimeout(() => {
-			container.css('opacity', '1');
-		}, 100);
-		const newHeight = newCard.outerHeight(true);
-		container.css('height', newHeight + 'px');
-		container.one('webkitAnimationEnd oanimationend msAnimationEnd animationend', () => {
-			container.removeClass(enterClass);
-			newCard.addClass('selected');
-			isAnimating = false;
-			if (timeline) timeline.removeClass('animating');
-		});
+			currentCard.removeClass('leaving');
+			newCard.removeClass('entering').addClass('selected');
+			eventsContent.find('li').not(newCard).not('.leaving').css({ opacity: 0, pointerEvents: 'none' });
+			// Set container height to match the new card
+			eventsContent.height(newCard.outerHeight(true));
+			// Remove animating class
+			eventsContent.closest('.horizontal-timeline').removeClass('animating');
+		}, 300); // Match the CSS animation duration
 	}
 
 	function updateOlderEvents(event) {

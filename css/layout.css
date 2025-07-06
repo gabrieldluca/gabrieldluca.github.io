@@ -161,7 +161,7 @@
 
 .content p {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(0.8rem, 0.9rem, 1rem);
+    font-size: clamp(0.85rem, 0.9rem, 95rem);
     line-height: 1.6;
 }
 
