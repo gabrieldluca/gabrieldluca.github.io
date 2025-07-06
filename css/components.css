@@ -113,11 +113,6 @@
   transition: opacity 0.2s;
 }
 
-.horizontal-timeline::before {
-  content: 'mobile';
-  display: none;
-}
-
 .horizontal-timeline.loaded {
   opacity: 1;
 }

@@ -436,6 +436,18 @@
         margin-left: 0;
     }
 
+    .content h1 {
+        margin-top: 0.5rem;
+    }
+
+    .content h2 {
+        margin-top: 2.5rem;
+    }
+
+    .content .right-column-container {
+        flex-direction: column-reverse;
+    }
+
     .sidebar-position-container {
         display: none;
     }
@@ -449,6 +461,8 @@
     }
 
     .steve-quote {
+        margin-top: 0;
+        margin-bottom: 2rem;
         width: clamp(12.5rem, 17.5rem, 22.5rem);
     }
 }

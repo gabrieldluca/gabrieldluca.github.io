@@ -93,14 +93,18 @@ jQuery(document).ready(function($) {
 		});
 
 		components.eventsContent.on('swipeleft', function() {
-			var mq = checkMQ();
-			if (mq === 'mobile') showNewContent(components, timelineTotWidth, 'next');
+			if (isMobile()) showNewContent(components, timelineTotWidth, 'next');
 		});
 
 		components.eventsContent.on('swiperight', function() {
-			var mq = checkMQ();
-			if (mq === 'mobile') showNewContent(components, timelineTotWidth, 'prev');
+			if (isMobile()) showNewContent(components, timelineTotWidth, 'prev');
 		});
+
+		if (isMobile()) {
+			components.eventsContent.on('touchmove', function(e) {
+				e.preventDefault();
+			});
+		}
 
 		$(document).keyup(function(event) {
 			if (event.which === 37 && elementInViewport(timeline.get(0))) {
@@ -354,12 +358,7 @@ jQuery(document).ready(function($) {
 		);
 	}
 
-	function checkMQ() {
-		// Check if mobile or desktop device
-		return window
-			.getComputedStyle(document.querySelector('.horizontal-timeline'), '::before')
-			.getPropertyValue('content')
-			.replace(/'/g, '')
-			.replace(/"/g, '');
+	function isMobile() {
+		return window.matchMedia('(max-width: 850px)').matches;
 	}
 });
