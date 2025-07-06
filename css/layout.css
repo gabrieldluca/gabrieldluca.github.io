@@ -66,7 +66,7 @@
 }
 
 .sidebar h1 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: bold;
     color: #000000;
@@ -76,7 +76,7 @@
 }
 
 .sidebar h2 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(0.8rem, 1vw, 1.1rem);
     font-weight: bold;
     color: #8A8A8F;
@@ -86,7 +86,7 @@
 }
 
 .sidebar h3 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(0.8rem, 0.9rem, 1rem);
     font-weight: bold;
     color: #000000;
@@ -96,7 +96,7 @@
 }
 
 .sidebar p {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(0.8rem, 0.9rem, 1rem);
     color: #7B7B7B;
     margin-top: 0.5rem;
@@ -107,7 +107,7 @@
 .sidebar-icon {
     width: clamp(26px, 2vw, 2.2vw);
     aspect-ratio: 1/1;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* Content */
@@ -144,7 +144,7 @@
 }
 
 .content h1 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(3.5rem, 5vw, 4.5rem);
     font-weight: bold;
     color: #FFFFFF;
@@ -154,9 +154,9 @@
 }
 
 .content h2 {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
-    font-weight: 550;
+    font-weight: bold;
     color: #FFFFFF;
     margin-top: 4.0rem;
     text-align: left;
@@ -169,7 +169,7 @@
 }
 
 .content p {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-size: clamp(0.85rem, 0.9rem, 95rem);
     line-height: 1.6;
 }
@@ -227,14 +227,12 @@
 }
 
 .awards-container p {
-    line-height: 1.0em;
+    line-height: 1.2em;
     cursor: pointer;
-
 }
 
 .award-title {
     color: #FFFFFF;
-    line-height: 0.5em;
 }
 
 .award-subtitle {
@@ -299,7 +297,7 @@
     }
     
     .sidebar-icon {
-        width: 70%;
+        width: 60%;
         aspect-ratio: 1/1;
         object-fit: fill;
     }
@@ -404,7 +402,7 @@
         width: clamp(1.5rem, 4vw, 2rem);
         height: clamp(1.5rem, 4vw, 2rem);
         aspect-ratio: 1/1;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     .content {

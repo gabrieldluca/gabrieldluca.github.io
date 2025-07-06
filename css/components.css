@@ -40,14 +40,14 @@
 }
 
 .card-institution-name {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-weight: bold;
     color: #000000;
     font-size: clamp(0.6rem, 0.85rem, 1rem);
 }
 
 .card-field-of-study {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     color: #7B7B7B;
     font-size: clamp(0.6rem, 0.85rem, 1rem);
 }
@@ -70,7 +70,7 @@
 }
 
 .card-dropout-status span {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-weight: bold;
     color: #D51515;
     font-size: clamp(0.55rem, 0.7rem, 0.85rem);
@@ -87,14 +87,14 @@
 }
 
 .card-completed-status span {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     font-weight: bold;
     color: #017F57;
     font-size: clamp(0.55rem, 0.7rem, 0.85rem);
 }
 
 .card-period {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
     color: #A2A2A2;
     font-weight: 550;
     padding-top: 2.5%;
@@ -204,7 +204,7 @@
   text-align: center;
   font-size: 0.8rem;
   padding-bottom: 15px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
   color: #FFFFFF;
   cursor: pointer;
   
@@ -374,6 +374,7 @@
   overflow-y: hidden !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
 .horizontal-timeline .events-content::-webkit-scrollbar {
@@ -453,7 +454,7 @@
   font-weight: 550;
   font-size: clamp(1.3rem, 1vw, 1.6rem);
   color: #FFFFFF;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
   padding: 0;
   margin: 0;
   line-height: 1;
@@ -478,7 +479,7 @@
 
 .horizontal-timeline .events-content p {
   font-size: clamp(0.8rem, 0.9rem, 1rem);
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
   color: #979797;
 }
 

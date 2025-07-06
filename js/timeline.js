@@ -107,6 +107,32 @@ jQuery(document).ready(function($) {
 				showNewContent(components, timelineTotWidth, 'next');
 			}
 		});
+
+		$(window).on('resize', function() {
+			// Recalculate event positions and timeline width
+			setDatePosition(components, eventsMinDistance);
+			var timelineTotWidth = setTimelineWidth(components, eventsMinDistance);
+
+			// Reset translation to 0 (leftmost)
+			setTransformValue(components.eventsWrapper.get(0), 'translateX', '0px');
+
+			// Update filling line and navigation arrows
+			var selectedEvent = components.eventsWrapper.find('.selected');
+			updateFilling(selectedEvent, components.fillingLine, timelineTotWidth);
+
+			var currentTranslateValue = 0;
+			var timelineWrapperWidth = components.timelineWrapper.width();
+			var eventsWrapperWidth = components.eventsWrapper.width();
+			var totWidth = timelineWrapperWidth - eventsWrapperWidth;
+			updateNavigationArrows(components, currentTranslateValue, totWidth);
+
+			// Recalculate the height for the selected card
+			var eventsContent = $('.horizontal-timeline .events-content');
+			var selectedCard = eventsContent.find('li.selected');
+			if (selectedCard.length) {
+				eventsContent.height(selectedCard.outerHeight(true));
+			}
+		});
 	}
 
 	function updateSlide(components, timelineTotWidth, direction) {
