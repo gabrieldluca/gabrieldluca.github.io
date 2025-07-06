@@ -384,7 +384,6 @@
   overflow: visible;
   margin-bottom: 2rem;
   min-height: 100px;
-  transition: height 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
 .horizontal-timeline .events-content li {
@@ -575,4 +574,13 @@
 .horizontal-timeline.animating .timeline-navigation a {
   pointer-events: none !important;
   cursor: not-allowed;
+}
+
+/* Disable transitions during resize for better performance */
+.horizontal-timeline.resizing * {
+  transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
 }

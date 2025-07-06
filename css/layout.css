@@ -30,6 +30,15 @@
     margin-bottom: 2rem;
 }
 
+.sidebar-email-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    gap: 1.0rem;
+}
+
 .sidebar-horizontal-container {
     display: flex;
     flex-direction: row;
@@ -231,22 +240,70 @@
     object-fit: contain;
 }
 
-/* Layout Responsiveness */
-
+/* Responsiveness – Tablet Devices (Landscape) */
 @media (max-width: 1125px) {
     .sidebar {
+        width: clamp(8rem, 10%, 15rem);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
         display: none;
+    }
+
+    .sidebar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar-content {
+        padding-top: 4rem;
+        max-width: 50%;
+    }
+    
+    .profile-picture {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 8%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .sidebar-content-separator {
+        height: 1px;
+        width: 100%;
+        background-color: #979797;
+        opacity: 25%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .sidebar-horizontal-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        gap: 2.0rem;
+    }
+    
+    .sidebar-icon {
+        width: 70%;
+        aspect-ratio: 1/1;
+        object-fit: fill;
     }
 
     .content {
         padding-left: 6rem;
-        margin-left: 0;
+        margin-left: 8rem;
     }
 
     .content article {
         max-width: 800px;
         margin: 0;
-        padding-bottom: 0rem;
     }
 
     .steve-quote {
@@ -254,14 +311,124 @@
     }
 }
 
-@media (max-width: 755px) {
+/* Responsiveness – Tablet Devices (Portrait) */
+@media (max-width: 850px) {
+    .sidebar {
+        width: 100%;
+        height: clamp(8.5rem, 10vh, 12rem);
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .sidebar-content {
+        width: 100%;
+        height: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 4rem;
+        gap: 2rem;
+    }
+    
+    .sidebar a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
+        display: block;
+    }
+
+    .sidebar h1 {
+        font-size: 1.5rem;
+        width: 11rem;
+    }
+
+    .sidebar h2 {
+        font-size: 0.9rem;
+        width: 11rem;
+    }
+
+    .sidebar-position-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .sidebar-email-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        min-width: 12rem;
+        margin-bottom: 1rem;
+        gap: 1rem;
+    }
+
+    .sidebar-horizontal-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: 100%;
+        margin: 0;
+        gap: 1rem;
+    }
+
+    .profile-picture {
+        width: clamp(4.5rem, 9vw, 5rem);
+        height: clamp(4.5rem, 9vw, 5rem);
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 8%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sidebar-icon {
+        width: clamp(1.5rem, 4vw, 2rem);
+        height: clamp(1.5rem, 4vw, 2rem);
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+    .content {
+        margin-left: 0;
+        padding-left: 4rem;
+        padding-top: 2rem;
+    }
+
+    .sidebar-content-separator {
+        height: 60%;
+        min-width: 1px;
+        margin: 0 1rem;
+    }
+}
+
+/* Responsiveness – Mobile Devices */
+@media (max-width: 650px) {
     #left-column-content-horizontal-container {
         flex-direction: column;
     }
 
+    .sidebar-content {
+        padding-left: 3rem;
+    }
+
     .content {
-        padding-left: 4rem;
+        padding-left: 3rem;
         margin-left: 0;
+    }
+
+    .sidebar-position-container {
+        display: none;
     }
 
     .steve-quote {

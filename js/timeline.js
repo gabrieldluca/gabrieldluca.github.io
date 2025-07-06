@@ -109,32 +109,6 @@ jQuery(document).ready(function($) {
 				showNewContent(components, timelineTotWidth, 'next');
 			}
 		});
-
-		$(window).on('resize', function() {
-			// Recalculate event positions and timeline width
-			setDatePosition(components, eventsMinDistance);
-			var timelineTotWidth = setTimelineWidth(components, eventsMinDistance);
-
-			// Reset translation to 0 (leftmost)
-			setTransformValue(components.eventsWrapper.get(0), 'translateX', '0px');
-
-			// Update filling line and navigation arrows
-			var selectedEvent = components.eventsWrapper.find('.selected');
-			updateFilling(selectedEvent, components.fillingLine, timelineTotWidth);
-
-			var currentTranslateValue = 0;
-			var timelineWrapperWidth = components.timelineWrapper.width();
-			var eventsWrapperWidth = components.eventsWrapper.width();
-			var totWidth = timelineWrapperWidth - eventsWrapperWidth;
-			updateNavigationArrows(components, currentTranslateValue, totWidth);
-
-			// Recalculate the height for the selected card
-			var eventsContent = $('.horizontal-timeline .events-content');
-			var selectedCard = eventsContent.find('li.selected');
-			if (selectedCard.length) {
-				eventsContent.height(selectedCard.outerHeight(true));
-			}
-		});
 	}
 
 	function updateSlide(components, timelineTotWidth, direction) {
@@ -232,10 +206,15 @@ jQuery(document).ready(function($) {
 		var totalEvents = components.timelineEvents.length;
 		var fixedSpacing = 200;
 		var leftPadding = 50;
+		var positions = [];
 
 		for (var i = 0; i < totalEvents; i++) {
-			components.timelineEvents.eq(i).css('left', leftPadding + i * fixedSpacing + 'px');
+			positions.push(leftPadding + i * fixedSpacing + 'px');
 		}
+		
+		components.timelineEvents.each(function(index) {
+			$(this).css('left', positions[index]);
+		});
 	}
 
 	function setTimelineWidth(components, width) {
@@ -248,35 +227,68 @@ jQuery(document).ready(function($) {
 		var totalWidth = Math.max(calculatedWidth, timelineWrapperWidth);
 
 		components.eventsWrapper.css('width', totalWidth + 'px');
-		updateFilling(components.timelineEvents.eq(0), components.fillingLine, totalWidth);
-
 		return totalWidth;
 	}
 
 	function updateVisibleContent(event, eventsContent) {
-		eventsContent.find('li').removeClass('entering leaving');
 		const eventDate = event.data('date');
 		const currentCard = eventsContent.find('.selected');
 		const newCard = eventsContent.find('[data-date="' + eventDate + '"]');
-		if (currentCard.is(newCard)) return;
 		
-		// Add animating class to prevent interactions during animation
-		eventsContent.closest('.horizontal-timeline').addClass('animating');
+		if (isSameCard(currentCard, newCard)) return;
 		
+		clearAnimationStates(eventsContent);
+		startCardTransition(currentCard, newCard, eventsContent);
+		scheduleTransitionCompletion(currentCard, newCard, eventsContent);
+	}
+	
+	function isSameCard(currentCard, newCard) {
+		return currentCard.is(newCard);
+	}
+	
+	function clearAnimationStates(eventsContent) {
+		eventsContent.find('li').removeClass('entering leaving');
+	}
+	
+	function startCardTransition(currentCard, newCard, eventsContent) {
+		const timeline = eventsContent.closest('.horizontal-timeline');
+		
+		timeline.addClass('animating');
 		currentCard.removeClass('selected').addClass('leaving');
-		newCard[0].style.opacity = '';
-		newCard[0].style.pointerEvents = '';
+		resetCardStyles(newCard);
 		newCard.addClass('entering');
-		
+	}
+	
+	function resetCardStyles(card) {
+		card[0].style.opacity = '';
+		card[0].style.pointerEvents = '';
+	}
+	
+	function scheduleTransitionCompletion(currentCard, newCard, eventsContent) {
 		setTimeout(() => {
-			currentCard.removeClass('leaving');
-			newCard.removeClass('entering').addClass('selected');
-			eventsContent.find('li').not(newCard).not('.leaving').css({ opacity: 0, pointerEvents: 'none' });
-			// Set container height to match the new card
-			eventsContent.height(newCard.outerHeight(true));
-			// Remove animating class
-			eventsContent.closest('.horizontal-timeline').removeClass('animating');
-		}, 300); // Match the CSS animation duration
+			completeCardTransition(currentCard, newCard, eventsContent);
+		}, 300);
+	}
+	
+	function completeCardTransition(currentCard, newCard, eventsContent) {
+		const timeline = eventsContent.closest('.horizontal-timeline');
+		
+		currentCard.removeClass('leaving');
+		newCard.removeClass('entering').addClass('selected');
+		hideInactiveCards(eventsContent, newCard);
+		adjustContainerHeight(eventsContent, newCard);
+		timeline.removeClass('animating');
+	}
+	
+	function hideInactiveCards(eventsContent, activeCard) {
+		eventsContent.find('li').not(activeCard).not('.leaving').css({ 
+			opacity: 0, 
+			pointerEvents: 'none' 
+		});
+	}
+	
+	function adjustContainerHeight(eventsContent, card) {
+		eventsContent.height(card.outerHeight(true));
 	}
 
 	function updateOlderEvents(event) {
