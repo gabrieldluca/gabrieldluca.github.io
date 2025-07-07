@@ -56,12 +56,12 @@ jQuery(document).ready(function ($) {
     // =====================
     function showShimmerForImage(imageSrc) {
         $modalImage.hide();
-        $modalShimmer.show();
+
         // Preload image to get natural size
         var img = new window.Image();
+        var maxSize = getMaxModalImageSize();
 
         img.onload = function () {
-            var maxSize = getMaxModalImageSize();
             var fitted = calculateFittedImageSize(
                 img.naturalWidth,
                 img.naturalHeight,
@@ -70,14 +70,20 @@ jQuery(document).ready(function ($) {
                 imageSrc
             );
 
+            // Set dimensions and show shimmer
             $modalShimmer.css({
                 width: fitted.width + "px",
                 height: fitted.height + "px"
             });
+            $modalShimmer.show();
         };
 
         img.onerror = function () {
-            $modalShimmer.css({ width: "300px", height: "180px" });
+            var fallbackHeight = maxSize.height;
+            var fallbackWidth = fallbackHeight * (img.naturalWidth / img.naturalHeight);
+
+            $modalShimmer.css({ width: fallbackWidth + "px", height: fallbackHeight + "px" });
+            $modalShimmer.show();
         };
 
         img.src = imageSrc;
@@ -85,6 +91,7 @@ jQuery(document).ready(function ($) {
 
     function showModalWithImage(imageSrc) {
         openModal();
+        resetShimmerDimensions();
         showShimmerForImage(imageSrc);
         $modalImage.attr("src", imageSrc);
         $modalImage.off("load").on("load", function () {
@@ -96,6 +103,14 @@ jQuery(document).ready(function ($) {
     // =====================
     // Utility Functions
     // =====================
+
+    function resetShimmerDimensions() {
+        $modalShimmer.css({
+            width: "0px",
+            height: "0px"
+        });
+    }
+
     function getMaxModalImageSize() {
         var isMobile = $(window).width() <= 667;
 
