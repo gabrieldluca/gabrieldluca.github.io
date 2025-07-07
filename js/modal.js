@@ -66,7 +66,8 @@ jQuery(document).ready(function ($) {
                 img.naturalWidth,
                 img.naturalHeight,
                 maxSize.width,
-                maxSize.height
+                maxSize.height,
+                imageSrc
             );
 
             $modalShimmer.css({
@@ -104,11 +105,13 @@ jQuery(document).ready(function ($) {
         };
     }
 
-    function calculateFittedImageSize(naturalWidth, naturalHeight, maxWidth, maxHeight) {
+    function calculateFittedImageSize(naturalWidth, naturalHeight, maxWidth, maxHeight, imageSrc) {
         var width = naturalWidth;
         var height = naturalHeight;
 
-        if (width / height > maxWidth / maxHeight) {
+        var isWiderImage = imageSrc.includes("WWDC18") || imageSrc.includes("GitHub Universe");
+
+        if (isWiderImage) {
             // Image is wider than the container
             width = Math.min(width, maxWidth);
             height = width * (naturalHeight / naturalWidth);
