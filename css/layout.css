@@ -225,7 +225,7 @@
 }
 
 .awards-container:hover {
-    transform: translateX(2px) scale(1.025);
+    transform: translateX(-2px) scale(1.02);
 }
 
 .awards-container p {
