@@ -23,7 +23,8 @@ export default defineConfig([
             sourceType: "module",
             globals: {
                 window: "readonly",
-                document: "readonly"
+                document: "readonly",
+                jQuery: 'readonly'
             }
         },
         plugins: {

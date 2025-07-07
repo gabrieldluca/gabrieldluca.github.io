@@ -355,12 +355,15 @@
         <div class="document-modal" id="documentModal">
             <div class="modal-backdrop"></div>
             <div class="modal-content">
+                <div id="modalShimmer" class="shimmer-wrapper" style="display: none">
+                    <div class="shimmer"></div>
+                </div>
                 <img
+                    id="modalImage"
+                    class="modal-image"
                     src=""
                     alt="Document"
-                    class="modal-image"
-                    id="modalImage"
-                    oncontextmenu="return false;" />
+                    style="display: none" />
             </div>
         </div>
     </body>

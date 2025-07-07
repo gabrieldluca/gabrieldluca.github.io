@@ -612,10 +612,45 @@
     cursor: not-allowed;
 }
 
+/* Shimmer */
+.shimmer-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #1c1c1c1a;
+    border-radius: 8px;
+}
+
+.shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        #1e1e1e 0%,
+        /* Very dark gray at 10% opacity */ #1a1a1a 50%,
+        /* Slightly lighter dark gray at 20% opacity */ #1e1e1e 100% /* Back to very dark gray */
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.3s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 /* Responsiveness – Mobile Devices */
 @media (max-width: 667px) {
     .modal-image {
-        max-width: 85Xvw;
+        max-width: 85vw;
         max-height: 90vh;
     }
 }
