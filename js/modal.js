@@ -4,6 +4,13 @@ jQuery(document).ready(function ($) {
     var $modalShimmer = $("#modalShimmer");
     var clearSrcTimeout = null;
 
+    // Pre-defined image dimensions for immediate shimmer sizing
+    var IMAGE_DIMENSIONS = {
+        "WWDC18.png": { width: 1626, height: 2300 },
+        "GitHub Universe.png": { width: 1626, height: 2300 },
+        "TOEFL ITP.png": { width: 2905, height: 1271 }
+    };
+
     bindEventHandlers();
 
     // =====================
@@ -47,6 +54,8 @@ jQuery(document).ready(function ($) {
         $("body").css("overflow", ""); // Restore scrolling
         clearSrcTimeout = setTimeout(function () {
             $modalImage.attr("src", "");
+            $modalShimmer.hide();
+            resetShimmerDimensions();
             clearSrcTimeout = null;
         }, 300);
     }
@@ -57,14 +66,15 @@ jQuery(document).ready(function ($) {
     function showShimmerForImage(imageSrc) {
         $modalImage.hide();
 
-        // Preload image to get natural size
-        var img = new window.Image();
+        // Get pre-defined dimensions for immediate shimmer sizing
         var maxSize = getMaxModalImageSize();
+        var filename = getImageFilename(imageSrc);
+        var dimensions = IMAGE_DIMENSIONS[filename];
 
-        img.onload = function () {
+        if (dimensions) {
             var fitted = calculateFittedImageSize(
-                img.naturalWidth,
-                img.naturalHeight,
+                dimensions.width,
+                dimensions.height,
                 maxSize.width,
                 maxSize.height,
                 imageSrc
@@ -75,28 +85,19 @@ jQuery(document).ready(function ($) {
                 height: fitted.height + "px"
             });
             $modalShimmer.show();
-            $modalImage.attr("src", imageSrc);
-        };
-
-        img.onerror = function () {
-            // Fallback dimensions
+        } else {
             var fallbackHeight = maxSize.height;
-            var fallbackWidth = fallbackHeight * (img.naturalWidth / img.naturalHeight);
+            var fallbackWidth = fallbackHeight * (1626 / 2300);
 
             $modalShimmer.css({ width: fallbackWidth + "px", height: fallbackHeight + "px" });
             $modalShimmer.show();
-            $modalImage.attr("src", imageSrc);
-        };
-
-        img.src = imageSrc;
+        }
     }
 
     function showModalWithImage(imageSrc) {
         openModal();
-        resetShimmerDimensions();
         showShimmerForImage(imageSrc);
-
-        // Set up image load handler
+        $modalImage.attr("src", imageSrc);
         $modalImage.off("load").on("load", function () {
             $modalShimmer.hide();
             $modalImage.show();
@@ -106,6 +107,10 @@ jQuery(document).ready(function ($) {
     // =====================
     // Utility Functions
     // =====================
+
+    function getImageFilename(imageSrc) {
+        return imageSrc.split("/").pop();
+    }
 
     function resetShimmerDimensions() {
         $modalShimmer.css({
