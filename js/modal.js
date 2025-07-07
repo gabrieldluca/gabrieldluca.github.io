@@ -70,20 +70,22 @@ jQuery(document).ready(function ($) {
                 imageSrc
             );
 
-            // Set dimensions and show shimmer
             $modalShimmer.css({
                 width: fitted.width + "px",
                 height: fitted.height + "px"
             });
             $modalShimmer.show();
+            $modalImage.attr("src", imageSrc);
         };
 
         img.onerror = function () {
+            // Fallback dimensions
             var fallbackHeight = maxSize.height;
             var fallbackWidth = fallbackHeight * (img.naturalWidth / img.naturalHeight);
 
             $modalShimmer.css({ width: fallbackWidth + "px", height: fallbackHeight + "px" });
             $modalShimmer.show();
+            $modalImage.attr("src", imageSrc);
         };
 
         img.src = imageSrc;
@@ -93,7 +95,8 @@ jQuery(document).ready(function ($) {
         openModal();
         resetShimmerDimensions();
         showShimmerForImage(imageSrc);
-        $modalImage.attr("src", imageSrc);
+
+        // Set up image load handler
         $modalImage.off("load").on("load", function () {
             $modalShimmer.hide();
             $modalImage.show();
