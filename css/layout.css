@@ -36,7 +36,7 @@
     align-items: flex-start;
     max-width: 100%;
     margin-bottom: 1rem;
-    gap: 1.0rem;
+    gap: 1rem;
 }
 
 .sidebar-horizontal-container {
@@ -45,7 +45,7 @@
     align-items: flex-start;
     max-width: 100%;
     margin-bottom: 1rem;
-    gap: 1.0rem;
+    gap: 1rem;
 }
 
 .sidebar-horizontal-container a {
@@ -57,7 +57,9 @@
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 8%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .profile-picture:hover {
@@ -66,7 +68,7 @@
 }
 
 .sidebar h1 {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: bold;
     color: #000000;
@@ -76,17 +78,17 @@
 }
 
 .sidebar h2 {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(0.8rem, 1vw, 1.1rem);
     font-weight: bold;
-    color: #8A8A8F;
+    color: #8a8a8f;
     margin-top: 0.5rem;
     text-align: left;
     line-height: 1;
 }
 
 .sidebar h3 {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(0.8rem, 0.9rem, 1rem);
     font-weight: bold;
     color: #000000;
@@ -96,9 +98,9 @@
 }
 
 .sidebar p {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(0.8rem, 0.9rem, 1rem);
-    color: #7B7B7B;
+    color: #7b7b7b;
     margin-top: 0.5rem;
     text-align: left;
     line-height: 1;
@@ -131,7 +133,7 @@
     flex-direction: row;
     align-items: flex-end;
     margin-left: -4px;
-    margin-bottom: 1.0rem;
+    margin-bottom: 1rem;
     max-width: 100%;
     gap: 0.3rem;
 }
@@ -144,32 +146,32 @@
 }
 
 .content h1 {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(3.5rem, 5vw, 4.5rem);
     font-weight: bold;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-top: 1.5rem;
     text-align: left;
     line-height: 1;
 }
 
 .content h2 {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(1.5rem, 2vw, 1.8rem);
     font-weight: 550;
-    color: #FFFFFF;
-    margin-top: 4.0rem;
+    color: #ffffff;
+    margin-top: 4rem;
     text-align: left;
     line-height: 1;
 }
 
 .content .text-highlight {
     font-weight: bold;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .content p {
-    font-family: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-size: clamp(0.85rem, 0.9rem, 0.95rem);
     line-height: 1.6;
 }
@@ -191,15 +193,15 @@
     flex-direction: row;
     align-items: flex-start;
     max-width: 100%;
-    padding-top: 2.0rem;
-    gap: clamp(2.0rem, 10%, 5.0rem);
+    padding-top: 2rem;
+    gap: clamp(2rem, 10%, 5rem);
 }
 
 .left-column-container {
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    gap: 2.0rem;
+    gap: 2rem;
 }
 
 .right-column-container {
@@ -219,7 +221,7 @@
     max-width: 100%;
     gap: 0.4rem;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+    transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1);
 }
 
 .awards-container:hover {
@@ -232,11 +234,11 @@
 }
 
 .award-title {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .award-subtitle {
-    color: #7B7B7B;
+    color: #7b7b7b;
 }
 
 .steve-quote {
@@ -255,7 +257,10 @@
         justify-content: flex-start;
     }
 
-    .sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
+    .sidebar h1,
+    .sidebar h2,
+    .sidebar h3,
+    .sidebar p {
         display: none;
     }
 
@@ -269,15 +274,17 @@
         padding-top: 4rem;
         max-width: 50%;
     }
-    
+
     .profile-picture {
         width: 100%;
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 8%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
     }
-    
+
     .sidebar-content-separator {
         height: 1px;
         width: 100%;
@@ -286,16 +293,16 @@
         margin-top: 2rem;
         margin-bottom: 2rem;
     }
-    
+
     .sidebar-horizontal-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         max-width: 100%;
         margin-bottom: 1rem;
-        gap: 2.0rem;
+        gap: 2rem;
     }
-    
+
     .sidebar-icon {
         width: 60%;
         aspect-ratio: 1/1;
@@ -340,14 +347,17 @@
         padding: 0 4rem;
         gap: 2rem;
     }
-    
+
     .sidebar a {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
-    .sidebar h1, .sidebar h2, .sidebar h3, .sidebar p {
+
+    .sidebar h1,
+    .sidebar h2,
+    .sidebar h3,
+    .sidebar p {
         display: block;
     }
 
@@ -395,7 +405,9 @@
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 8%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
     }
 
     .sidebar-icon {
@@ -454,7 +466,8 @@
         justify-content: flex-start;
     }
 
-    .sidebar h3, .sidebar p {
+    .sidebar h3,
+    .sidebar p {
         font-size: 0.8rem;
     }
 

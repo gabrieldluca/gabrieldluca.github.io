@@ -1,23 +1,37 @@
 body {
     background-color: #000000;
-    color: #7B7B7B;
-	cursor: url('../images/cursor/arrow-pointer.svg') 0 0, auto;
+    color: #7b7b7b;
+    cursor:
+        url("../images/cursor/arrow-pointer.svg") 0 0,
+        auto;
     margin: 0;
 }
 
-p, span, .text-element, h1, h2, h3, h4, h5, h6 {
-	cursor: url('../images/cursor/beam.svg') 0 0, auto;
+p,
+span,
+.text-element,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    cursor:
+        url("../images/cursor/beam.svg") 0 0,
+        auto;
 }
 
 ::selection {
-    background-color: #915CF726;
+    background-color: #915cf726;
 }
 
 .hyperlink {
-    text-decoration: none; 
+    text-decoration: none;
     color: inherit;
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
     box-sizing: border-box;
 }

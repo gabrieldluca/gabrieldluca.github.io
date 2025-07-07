@@ -1,235 +1,367 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<title>Gabriel D'Luca</title>
+    <head>
+        <title>Gabriel D'Luca</title>
 
-		<!-- Favicon -->		
-		<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-		<link rel="manifest" href="images/favicon/site.webmanifest">
-		<link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#915CF7">
-		<link rel="shortcut icon" href="images/favicon/favicon.ico">
-			
-		<!-- CSS -->
-		<link href="css/base.css" rel="stylesheet">
-		<link href="css/layout.css" rel="stylesheet">
-		<link href="css/components.css" rel="stylesheet">
-		<link href="css/reset.css" rel="stylesheet">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png" />
+        <link rel="manifest" href="images/favicon/site.webmanifest" />
+        <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#915CF7" />
+        <link rel="shortcut icon" href="images/favicon/favicon.ico" />
 
-		<!-- JS -->
-		<script src="js/vendor/jquery-2.1.4.js"></script>
-		<script src="js/vendor/jquery.mobile.custom.min.js"></script>
-		<script src="js/timeline.js"></script>
-		<script src="js/modal.js"></script>
-		<script src="js/main.js"></script>
+        <!-- CSS -->
+        <link href="css/base.css" rel="stylesheet" />
+        <link href="css/layout.css" rel="stylesheet" />
+        <link href="css/components.css" rel="stylesheet" />
+        <link href="css/reset.css" rel="stylesheet" />
 
-		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-							
-		<!-- Character Encoding -->
-		<meta charset="UTF-8">
+        <!-- JS -->
+        <script src="js/vendor/jquery-2.1.4.js"></script>
+        <script src="js/vendor/jquery.mobile.custom.min.js"></script>
+        <script src="js/timeline.js"></script>
+        <script src="js/modal.js"></script>
+        <script src="js/main.js"></script>
 
-		<!-- Force Latest IE Rendering Engine -->
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <!-- Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet" />
 
-		<!-- Responsive Design: Mobile Viewport -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Character Encoding -->
+        <meta charset="UTF-8" />
 
-		<!-- Browser and Windows Tile Colors -->
-		<meta name="msapplication-TileColor" content="#000000">
-		<meta name="msapplication-config" content="images/favicon/browserconfig.xml">
-		<meta name="theme-color" content="#000000">
-	</head>
-	
-	<body>
-		<!-- Sidebar -->
-		<aside class="sidebar">
-			<div class="sidebar-content">
-				<img src="images/sidebar/profile-picture.jpg" alt="Profile Picture" class="profile-picture" oncontextmenu="return false;">
-				<div class="sidebar-position-container">
-					<h1>Gabriel D'Luca</h1>
-					<h2>Sr Software Engineer</h2>	
-				</div>
-				
-				<div class="sidebar-content-separator"></div>
-				
-				<div class="sidebar-supplemental-content-container">
-					<div class="sidebar-email-container">
-						<h3>email</h3>
-						<p>dluca.dev@gmail.com</p>
-					</div>
-					<div class="sidebar-horizontal-container">
-						<a href="https://www.linkedin.com/in/gabriel-dluca/" target="_blank" class="hyperlink">
-							<img src="images/sidebar/linkedin.svg" alt="LinkedIn" class="sidebar-icon">
-						</a>
-						<a href="https://github.com/gabrieldluca" target="_blank" class="hyperlink">
-							<img src="images/sidebar/github.svg" alt="GitHub" class="sidebar-icon">
-						</a>
-						<img src="images/sidebar/pride-logo.svg" alt="Pride Logo" class="sidebar-icon">
-					</div>
-				</div>
-			</div>
-		</aside>
+        <!-- Force Latest IE Rendering Engine -->
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
-		<!-- Content -->
-		<main class="content">
-			<article>
-				<div class="comma-horizontal-container">
-					<h1>Hello</h1>
-					<img src="images/content/comma.svg" alt="Comma" class="comma">
-				</div>
-				<p>I'm <span class="text-highlight">Gabriel D'Luca</span>, an award-winning Senior Software Engineer with 5+ years of experience in scalable iOS engineering, building and launching products for large-scale companies while designing end-to-end solutions.</p>
+        <!-- Responsive Design: Mobile Viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-				<h2>Education</h2>
-				<p id="subtitle">Brief overview of academic background, recognitions, and specializations.</p>
+        <!-- Browser and Windows Tile Colors -->
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-config" content="images/favicon/browserconfig.xml" />
+        <meta name="theme-color" content="#000000" />
+    </head>
 
-				<div class="content-horizontal-container" id="left-column-content-horizontal-container">
-					<div class="left-column-container">
-						<a href="https://portal.cin.ufpe.br/o-cin/" target="_blank" class="hyperlink">
-							<div class="card">
-								<div class="card-horizontal-container">
-									<div class="card-inner-layout"></div>
-									<div class="card-vertical-container">
-										<span class="card-institution-name">UFPE <span style="color:#D8D8D8">/</span> Centro de Informática</span>
-										<span class="card-field-of-study"><span style="color:#915CF7;font-weight:bold;">BSc.</span> Information Systems</span>
-										<div class="card-status-container">
-											<div class="card-dropout-status"><span>STUDENT</span></div>
-											<span class="card-period">2016 – 2022</span>
-										</div>
-									</div>
-								</div>
-							</div>	
-						</a>
+    <body>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <img
+                    src="images/sidebar/profile-picture.jpg"
+                    alt="Profile Picture"
+                    class="profile-picture"
+                    oncontextmenu="return false;" />
+                <div class="sidebar-position-container">
+                    <h1>Gabriel D'Luca</h1>
+                    <h2>Sr Software Engineer</h2>
+                </div>
 
-						<a href="https://developer.apple.com/academies/" target="_blank" class="hyperlink">
-							<div class="card">
-								<div class="card-horizontal-container">
-									<div class="card-inner-layout"></div>
-									<div class="card-vertical-container">
-										<span class="card-institution-name">Apple Developer Academy</span>
-										<span class="card-field-of-study"><span style="color:#915CF7;font-weight:bold;">Spec.</span> iOS Engineering</span>
-										<div class="card-status-container">
-											<div class="card-completed-status"><span>GRADUATE</span></div>
-											<span class="card-period">2018 – 2020</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</a>
+                <div class="sidebar-content-separator"></div>
 
-						<a href="https://www.thoughtworks.com/en-br/careers/graduates" target="_blank" class="hyperlink">
-							<div class="card">
-								<div class="card-horizontal-container">
-									<div class="card-inner-layout"></div>
-									<div class="card-vertical-container">
-										<span class="card-institution-name">ThoughtWorks University</span>
-										<span class="card-field-of-study"><span style="color:#915CF7;font-weight:bold;">Spec.</span> Leadership</span>
-										<div class="card-status-container">
-											<div class="card-completed-status"><span>GRADUATE</span></div>
-											<span class="card-period">2020</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="right-column-container">
-						<div class="awards-container" data-document="images/content/documents/WWDC18.png">
-							<p class="award-title"><span class="emoji-only">🏆 </span>WWDC18 Scholarship Winner</p>
-							<p class="award-subtitle">Apple, 2018</p>
-						</div>
+                <div class="sidebar-supplemental-content-container">
+                    <div class="sidebar-email-container">
+                        <h3>email</h3>
+                        <p>dluca.dev@gmail.com</p>
+                    </div>
+                    <div class="sidebar-horizontal-container">
+                        <a
+                            href="https://www.linkedin.com/in/gabriel-dluca/"
+                            target="_blank"
+                            class="hyperlink">
+                            <img
+                                src="images/sidebar/linkedin.svg"
+                                alt="LinkedIn"
+                                class="sidebar-icon" />
+                        </a>
+                        <a href="https://github.com/gabrieldluca" target="_blank" class="hyperlink">
+                            <img
+                                src="images/sidebar/github.svg"
+                                alt="GitHub"
+                                class="sidebar-icon" />
+                        </a>
+                        <img
+                            src="images/sidebar/pride-logo.svg"
+                            alt="Pride Logo"
+                            class="sidebar-icon" />
+                    </div>
+                </div>
+            </div>
+        </aside>
 
-						<div class="awards-container" data-document="images/content/documents/GitHub Universe.png">
-							<p class="award-title"><span class="emoji-only">🏆 </span>GitHub Universe Inclusivity Scholarship Winner</p>
-							<p class="award-subtitle">GitHub, 2018</p>
-						</div>
+        <!-- Content -->
+        <main class="content">
+            <article>
+                <div class="comma-horizontal-container">
+                    <h1>Hello</h1>
+                    <img src="images/content/comma.svg" alt="Comma" class="comma" />
+                </div>
+                <p>
+                    I'm <span class="text-highlight">Gabriel D'Luca</span>, an award-winning Senior
+                    Software Engineer with 5+ years of experience in scalable iOS engineering,
+                    building and launching products for large-scale companies while designing
+                    end-to-end solutions.
+                </p>
 
-						<div class="awards-container" data-document="images/content/documents/TOELF ITP.png">
-							<p class="award-title"><span class="emoji-only">🥈 </span>B2 – Independent English User</p>
-							<p class="award-subtitle">TOEFL ITP, 2016</p>
-						</div>
+                <h2>Education</h2>
+                <p id="subtitle">
+                    Brief overview of academic background, recognitions, and specializations.
+                </p>
 
-						<img src="images/content/quote.png" alt="Steve Jobs Quote" class="steve-quote">
-					</div>
-				</div>
+                <div
+                    class="content-horizontal-container"
+                    id="left-column-content-horizontal-container">
+                    <div class="left-column-container">
+                        <a
+                            href="https://portal.cin.ufpe.br/o-cin/"
+                            target="_blank"
+                            class="hyperlink">
+                            <div class="card">
+                                <div class="card-horizontal-container">
+                                    <div class="card-inner-layout"></div>
+                                    <div class="card-vertical-container">
+                                        <span class="card-institution-name"
+                                            >UFPE <span style="color: #d8d8d8">/</span> Centro de
+                                            Informática</span
+                                        >
+                                        <span class="card-field-of-study"
+                                            ><span style="color: #915cf7; font-weight: bold"
+                                                >BSc.</span
+                                            >
+                                            Information Systems</span
+                                        >
+                                        <div class="card-status-container">
+                                            <div class="card-dropout-status">
+                                                <span>STUDENT</span>
+                                            </div>
+                                            <span class="card-period">2016 – 2022</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
 
-				<h2>Experience</h2>
-				<p id="subtitle">Career timeline with hands-on experience in software engineering.</p>
+                        <a
+                            href="https://developer.apple.com/academies/"
+                            target="_blank"
+                            class="hyperlink">
+                            <div class="card">
+                                <div class="card-horizontal-container">
+                                    <div class="card-inner-layout"></div>
+                                    <div class="card-vertical-container">
+                                        <span class="card-institution-name"
+                                            >Apple Developer Academy</span
+                                        >
+                                        <span class="card-field-of-study"
+                                            ><span style="color: #915cf7; font-weight: bold"
+                                                >Spec.</span
+                                            >
+                                            iOS Engineering</span
+                                        >
+                                        <div class="card-status-container">
+                                            <div class="card-completed-status">
+                                                <span>GRADUATE</span>
+                                            </div>
+                                            <span class="card-period">2018 – 2020</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
 
-				<section class="horizontal-timeline">
-					<div class="timeline">
-						<!-- Timeline Events -->
-						<div class="events-wrapper">
-							<div class="events">
-								<ol>
-									<li><a data-date="09/01/2017" class="selected">2017</a></li>
-									<li><a data-date="03/01/2020" class="future-event">2020</a></li>
-									<li><a data-date="03/01/2021" class="future-event">2021</a></li>
-									<li><a data-date="03/01/2022" class="future-event">2022</a></li>
-								</ol>
+                        <a
+                            href="https://www.thoughtworks.com/en-br/careers/graduates"
+                            target="_blank"
+                            class="hyperlink">
+                            <div class="card">
+                                <div class="card-horizontal-container">
+                                    <div class="card-inner-layout"></div>
+                                    <div class="card-vertical-container">
+                                        <span class="card-institution-name"
+                                            >ThoughtWorks University</span
+                                        >
+                                        <span class="card-field-of-study"
+                                            ><span style="color: #915cf7; font-weight: bold"
+                                                >Spec.</span
+                                            >
+                                            Leadership</span
+                                        >
+                                        <div class="card-status-container">
+                                            <div class="card-completed-status">
+                                                <span>GRADUATE</span>
+                                            </div>
+                                            <span class="card-period">2020</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="right-column-container">
+                        <div
+                            class="awards-container"
+                            data-document="images/content/documents/WWDC18.png">
+                            <p class="award-title">
+                                <span class="emoji-only">🏆 </span>WWDC18 Scholarship Winner
+                            </p>
+                            <p class="award-subtitle">Apple, 2018</p>
+                        </div>
 
-								<span class="filling-line" aria-hidden="true"></span>
-							</div>
-						</div>
-											
-						<ul class="timeline-navigation">
-							<li><a href="#0" class="prev inactive">Prev</a></li>
-							<li><a href="#0" class="next">Next</a></li>
-						</ul>
-					</div>
+                        <div
+                            class="awards-container"
+                            data-document="images/content/documents/GitHub Universe.png">
+                            <p class="award-title">
+                                <span class="emoji-only">🏆 </span>GitHub Universe Inclusivity
+                                Scholarship Winner
+                            </p>
+                            <p class="award-subtitle">GitHub, 2018</p>
+                        </div>
 
-					<!-- Event Contents -->
-					<div class="events-content">
-						<ol>
-							<li class="selected" data-date="09/01/2017">
-								<div class="content-horizontal-container">
-									<img src="images/content/logos/motorola.jpg" alt="Motorola Logo" class="company-logo">
-									<h2>Motorola Mobility</h2>
-								</div>
-								<p>	
-									Ground-up experience with Quality Assurance in Motorola's Experiences team. I have learned and applied core testing strategies to foster quality in strategic products, such as Moto Display and Moto Voice for Alexa.<br><br>This included automated testing of voice interactions using Pytest, validating wake word detection, speech recognition accuracy, and end-to-end audio command responses. Tests were performed in a smart room setup, involving audio playback, sensor monitoring, and physical hardware configured to simulate real-world usage.
-								</p>
-							</li>
-							<li data-date="03/01/2020">
-								<div class="content-horizontal-container">
-									<img src="images/content/logos/thoughtworks.jpg" alt="ThoughtWorks Logo" class="company-logo">
-									<h2>ThoughtWorks</h2>
-								</div>
-								<p>	
-									Led the integration of React Native with a native Swift/Objective-C codebase in a multinational client, enabling hybrid development and improving delivery efficiency. Also executed an architectural redesign on legacy frameworks, making them more scalable and reliable.<br><br>Advocated for agile practices such as testing, continuous integration, and automation of release processes. In addition to consulting duties, I’ve also directly contributed to Recruitment, and Learning & Development (L&D) workstreams company-wise.
-								</p>
-							</li>
-							<li data-date="03/01/2021">
-								<div class="content-horizontal-container">
-									<img src="images/content/logos/picpay.png" alt="PicPay Logo" class="company-logo">
-									<h2>PicPay</h2>
-								</div>
-								<p>	
-									Led the end-to-end delivery of a new promotional mechanic, engineering the app experience from requirements to production while performing a leadership role within the team. Spearheaded mobile delivery, mentored three Junior engineers in engineering best practices, and established Agile workflows to optimize team-wise delivery assurance.<br><br>Additionally, acted as a key facilitator for Agile processes and supported both Product Manager (PM) and Engineering Manager (EM) roles — handling stakeholder management, prioritization, and technical requirements to drive efficient execution.
-								</p>
-							</li>
-							<li data-date="03/01/2022">
-								<div class="content-horizontal-container">
-									<img src="images/content/logos/uber.png" alt="Uber Logo" class="company-logo">
-									<h2>Uber</h2>
-								</div>
-								<p>	
-									Progressed from an Individual Contributor (IC) to a strategic team player, consistently leading Design & Architecture assignments for high-impact projects and complex iOS platform redesigns.<br><br>As the Identity Verification team doubled its size, I've been a major contributor on onboarding peers for two teams, mentoring top-tier engineers, coordinating severe incidents as an escalation point, managing stakeholders from various lines of business, and championing best practices in quality and observability.
-								</p>
-							</li>
-						</ol>
-					</div>
-				</section>
-			</article>
-		</main>
+                        <div
+                            class="awards-container"
+                            data-document="images/content/documents/TOELF ITP.png">
+                            <p class="award-title">
+                                <span class="emoji-only">🥈 </span>B2 – Independent English User
+                            </p>
+                            <p class="award-subtitle">TOEFL ITP, 2016</p>
+                        </div>
 
-		<!-- Document Modal -->
-		<div class="document-modal" id="documentModal">
-			<div class="modal-backdrop"></div>
-			<div class="modal-content">
-				<img src="" alt="Document" class="modal-image" id="modalImage" oncontextmenu="return false;">
-			</div>
-		</div>
-	</body>
+                        <img
+                            src="images/content/quote.png"
+                            alt="Steve Jobs Quote"
+                            class="steve-quote" />
+                    </div>
+                </div>
+
+                <h2>Experience</h2>
+                <p id="subtitle">
+                    Career timeline with hands-on experience in software engineering.
+                </p>
+
+                <section class="horizontal-timeline">
+                    <div class="timeline">
+                        <!-- Timeline Events -->
+                        <div class="events-wrapper">
+                            <div class="events">
+                                <ol>
+                                    <li><a data-date="09/01/2017" class="selected">2017</a></li>
+                                    <li><a data-date="03/01/2020" class="future-event">2020</a></li>
+                                    <li><a data-date="03/01/2021" class="future-event">2021</a></li>
+                                    <li><a data-date="03/01/2022" class="future-event">2022</a></li>
+                                </ol>
+
+                                <span class="filling-line" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <ul class="timeline-navigation">
+                            <li><a href="#0" class="prev inactive">Prev</a></li>
+                            <li><a href="#0" class="next">Next</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Event Contents -->
+                    <div class="events-content">
+                        <ol>
+                            <li class="selected" data-date="09/01/2017">
+                                <div class="content-horizontal-container">
+                                    <img
+                                        src="images/content/logos/motorola.jpg"
+                                        alt="Motorola Logo"
+                                        class="company-logo" />
+                                    <h2>Motorola Mobility</h2>
+                                </div>
+                                <p>
+                                    Ground-up experience with Quality Assurance in Motorola's
+                                    Experiences team. I have learned and applied core testing
+                                    strategies to foster quality in strategic products, such as Moto
+                                    Display and Moto Voice for Alexa.<br /><br />This included
+                                    automated testing of voice interactions using Pytest, validating
+                                    wake word detection, speech recognition accuracy, and end-to-end
+                                    audio command responses. Tests were performed in a smart room
+                                    setup, involving audio playback, sensor monitoring, and physical
+                                    hardware configured to simulate real-world usage.
+                                </p>
+                            </li>
+                            <li data-date="03/01/2020">
+                                <div class="content-horizontal-container">
+                                    <img
+                                        src="images/content/logos/thoughtworks.jpg"
+                                        alt="ThoughtWorks Logo"
+                                        class="company-logo" />
+                                    <h2>ThoughtWorks</h2>
+                                </div>
+                                <p>
+                                    Led the integration of React Native with a native
+                                    Swift/Objective-C codebase in a multinational client, enabling
+                                    hybrid development and improving delivery efficiency. Also
+                                    executed an architectural redesign on legacy frameworks, making
+                                    them more scalable and reliable.<br /><br />Advocated for agile
+                                    practices such as testing, continuous integration, and
+                                    automation of release processes. In addition to consulting
+                                    duties, I’ve also directly contributed to Recruitment, and
+                                    Learning & Development (L&D) workstreams company-wise.
+                                </p>
+                            </li>
+                            <li data-date="03/01/2021">
+                                <div class="content-horizontal-container">
+                                    <img
+                                        src="images/content/logos/picpay.png"
+                                        alt="PicPay Logo"
+                                        class="company-logo" />
+                                    <h2>PicPay</h2>
+                                </div>
+                                <p>
+                                    Led the end-to-end delivery of a new promotional mechanic,
+                                    engineering the app experience from requirements to production
+                                    while performing a leadership role within the team. Spearheaded
+                                    mobile delivery, mentored three Junior engineers in engineering
+                                    best practices, and established Agile workflows to optimize
+                                    team-wise delivery assurance.<br /><br />Additionally, acted as
+                                    a key facilitator for Agile processes and supported both Product
+                                    Manager (PM) and Engineering Manager (EM) roles — handling
+                                    stakeholder management, prioritization, and technical
+                                    requirements to drive efficient execution.
+                                </p>
+                            </li>
+                            <li data-date="03/01/2022">
+                                <div class="content-horizontal-container">
+                                    <img
+                                        src="images/content/logos/uber.png"
+                                        alt="Uber Logo"
+                                        class="company-logo" />
+                                    <h2>Uber</h2>
+                                </div>
+                                <p>
+                                    Progressed from an Individual Contributor (IC) to a strategic
+                                    team player, consistently leading Design & Architecture
+                                    assignments for high-impact projects and complex iOS platform
+                                    redesigns.<br /><br />As the Identity Verification team doubled
+                                    its size, I've been a major contributor on onboarding peers for
+                                    two teams, mentoring top-tier engineers, coordinating severe
+                                    incidents as an escalation point, managing stakeholders from
+                                    various lines of business, and championing best practices in
+                                    quality and observability.
+                                </p>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+        <!-- Document Modal -->
+        <div class="document-modal" id="documentModal">
+            <div class="modal-backdrop"></div>
+            <div class="modal-content">
+                <img
+                    src=""
+                    alt="Document"
+                    class="modal-image"
+                    id="modalImage"
+                    oncontextmenu="return false;" />
+            </div>
+        </div>
+    </body>
 </html>
