@@ -109,7 +109,7 @@ jQuery(document).ready(function ($) {
         var width = naturalWidth;
         var height = naturalHeight;
 
-        var isWiderImage = imageSrc.includes("WWDC18") || imageSrc.includes("GitHub Universe");
+        var isWiderImage = imageSrc.includes("TOEFL");
 
         if (isWiderImage) {
             // Image is wider than the container
