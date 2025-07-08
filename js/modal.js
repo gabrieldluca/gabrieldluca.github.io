@@ -76,8 +76,7 @@ jQuery(document).ready(function ($) {
                 dimensions.width,
                 dimensions.height,
                 maxSize.width,
-                maxSize.height,
-                imageSrc
+                maxSize.height
             );
 
             $modalShimmer.css({
@@ -128,22 +127,14 @@ jQuery(document).ready(function ($) {
         };
     }
 
-    function calculateFittedImageSize(naturalWidth, naturalHeight, maxWidth, maxHeight, imageSrc) {
-        var width = naturalWidth;
-        var height = naturalHeight;
+    function calculateFittedImageSize(naturalWidth, naturalHeight, maxWidth, maxHeight) {
+        var widthRatio = maxWidth / naturalWidth;
+        var heightRatio = maxHeight / naturalHeight;
+        var scale = Math.min(widthRatio, heightRatio);
 
-        var isWiderImage = imageSrc.includes("TOEFL");
-
-        if (isWiderImage) {
-            // Image is wider than the container
-            width = Math.min(width, maxWidth);
-            height = width * (naturalHeight / naturalWidth);
-        } else {
-            // Image is taller than the container
-            height = Math.min(height, maxHeight);
-            width = height * (naturalWidth / naturalHeight);
-        }
-
-        return { width: width, height: height };
+        return {
+            width: naturalWidth * scale,
+            height: naturalHeight * scale
+        };
     }
 });
