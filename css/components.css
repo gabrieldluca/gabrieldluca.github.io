@@ -63,7 +63,7 @@
 }
 
 .card-status {
-    background-color: #915CF726;
+    background-color: #915cf726;
     margin-top: 0.3rem;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -78,7 +78,7 @@
 .card-status span {
     font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     font-weight: bold;
-    color: #432F90;
+    color: #432f90;
     font-size: clamp(0.55rem, 0.8rem, 0.85rem);
 }
 
@@ -394,11 +394,11 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
-    padding: 24px;
+    padding: 20px;
     z-index: 1;
     transition: none;
     border-radius: 16px;
-    background-color: #3c3c3f66;
+    background-color: #3c3c3f55;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transform: translate3d(0, 0, 0);
     will-change: transform, opacity;
@@ -486,13 +486,25 @@
     display: block;
 }
 
+.horizontal-timeline .events-content .content-horizontal-container .event-period {
+    background-color: #231b43;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+}
+
 .horizontal-timeline .events-content .content-horizontal-container {
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     padding-top: 0;
     padding-bottom: 12px;
     gap: 12px;
+}
+
+.horizontal-timeline .events-content .content-horizontal-container > :last-child {
+    margin-left: auto;
 }
 
 .horizontal-timeline .events-content .content-vertical-container {
@@ -504,7 +516,7 @@
 }
 
 .horizontal-timeline .events-content .content-vertical-container p {
-    color: #FFFFFF;
+    color: #ffffff;
     line-height: 1;
 }
 
@@ -524,6 +536,13 @@
     font-size: clamp(0.8rem, 0.9rem, 1rem);
     font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     color: #979797;
+}
+
+.horizontal-timeline .events-content .content-horizontal-container .event-period p {
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
+    font-weight: 500;
+    color: #915cf7;
+    font-size: clamp(0.55rem, 0.75rem, 0.8rem) !important;
 }
 
 .horizontal-timeline .events-content em,
