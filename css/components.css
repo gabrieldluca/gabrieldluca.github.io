@@ -22,7 +22,7 @@
     background-color: #000000;
     opacity: 7.5%;
     min-width: 1.25%;
-    aspect-ratio: 1/16;
+    aspect-ratio: 1/14;
     border-radius: 8px;
 }
 
@@ -477,7 +477,7 @@
 
 .horizontal-timeline .events-content .content-horizontal-container h2 {
     font-weight: 550;
-    font-size: clamp(1.3rem, 1vw, 1.6rem);
+    font-size: clamp(1.1rem, 0.65vw, 1.45rem);
     color: #ffffff;
     font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
     padding: 0;
@@ -495,8 +495,26 @@
     gap: 12px;
 }
 
+.horizontal-timeline .events-content .content-vertical-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+    gap: 0.4rem;
+}
+
+.horizontal-timeline .events-content .content-vertical-container p {
+    color: #FFFFFF;
+    line-height: 1;
+}
+
+.horizontal-timeline .events-content .content-vertical-container .text-highlight {
+    color: #915cf7;
+    line-height: 1;
+}
+
 .horizontal-timeline .events-content .company-logo {
-    width: clamp(32px, 2vw, 2.2vw);
+    width: clamp(40px, 2vw, 2.2vw);
     aspect-ratio: 1/1;
     border-radius: 8px;
     display: block;
