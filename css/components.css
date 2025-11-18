@@ -486,6 +486,55 @@
     display: block;
 }
 
+.horizontal-timeline .events-content .article-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.horizontal-timeline .events-content .article-container .content-vertical-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 100%;
+    gap: 0.6rem;
+}
+
+.horizontal-timeline .events-content .article-container h3 {
+    font-weight: 550;
+    font-size: clamp(0.85rem, 1rem, 1.15rem);
+    color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    display: block;
+}
+
+.horizontal-timeline .events-content .article-container .content-vertical-container p {
+    font-size: clamp(0.8rem, 0.9rem, 1rem);
+    font-family: "Helvetica Neue", Helvetica, "Inter", Arial, sans-serif;
+    color: #979797;
+    line-height: 1.2;
+}
+
+.horizontal-timeline .events-content .article-container .article-image {
+    max-width: 30%;
+    aspect-ratio: 12/7;
+    object-fit: cover;
+    border-radius: 16px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.horizontal-timeline .events-content .article-container .article-image:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 0px 16px rgba(45, 45, 47, 0.6);
+}
+
 .horizontal-timeline .events-content .content-horizontal-container .event-period {
     background-color: #231b43;
     padding-top: 4px;
