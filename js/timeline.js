@@ -15,6 +15,7 @@ jQuery(document).ready(function ($) {
             var timelineTotWidth = setTimelineWidth(components, eventsMinDistance);
 
             timeline.addClass("loaded");
+            hideArticleContainers(timeline);
 
             components.timelineEvents.each(function () {
                 var eventDate = $(this).data("date");
@@ -62,6 +63,7 @@ jQuery(document).ready(function ($) {
                 var initialHeight = selectedContent.outerHeight(true);
 
                 components.eventsContent.css("height", initialHeight + "px");
+                revealArticleContainer(selectedContent, components.eventsContent, true);
             }
 
             bindEventHandlers(components, timelineTotWidth, timeline);
@@ -252,7 +254,7 @@ jQuery(document).ready(function ($) {
         setTransformValue(filling.get(0), "scaleX", scaleValue);
     }
 
-    function setDatePosition(components, min) {
+    function setDatePosition(components) {
         var totalEvents = components.timelineEvents.length;
         var fixedSpacing = isMobile() ? 120 : 188;
         var leftPadding = 50;
@@ -267,7 +269,7 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    function setTimelineWidth(components, width) {
+    function setTimelineWidth(components) {
         var totalEvents = components.timelineEvents.length;
         var fixedSpacing = isMobile() ? 120 : 188;
         var leftPadding = 50;
@@ -308,6 +310,7 @@ jQuery(document).ready(function ($) {
 
         timeline.addClass("animating");
         currentCard.removeClass("selected").addClass("leaving");
+        hideArticleContainers(newCard);
         resetCardStyles(newCard);
         newCard.addClass("entering");
     }
@@ -329,19 +332,74 @@ jQuery(document).ready(function ($) {
         currentCard.removeClass("leaving");
         newCard.removeClass("entering").addClass("selected");
         hideInactiveCards(eventsContent, newCard);
-        adjustContainerHeight(eventsContent, newCard);
+        revealArticleContainer(newCard, eventsContent, false);
         timeline.removeClass("animating");
     }
 
     function hideInactiveCards(eventsContent, activeCard) {
-        eventsContent.find("li").not(activeCard).not(".leaving").css({
+        var inactiveCards = eventsContent.find("li").not(activeCard).not(".leaving");
+
+        inactiveCards.css({
             opacity: 0,
             pointerEvents: "none"
         });
+
+        hideArticleContainers(inactiveCards);
     }
 
     function adjustContainerHeight(eventsContent, card) {
         eventsContent.height(card.outerHeight(true));
+    }
+
+    function hideArticleContainers(scope) {
+        var target = scope.find ? scope : $(scope);
+
+        target.find(".article-container").each(function () {
+            $(this).stop(true, true).css({
+                opacity: 0,
+                display: "none"
+            });
+        });
+    }
+
+    function revealArticleContainer(card, eventsContent, instant) {
+        var article = card.find(".article-container");
+
+        // If no article-container exists in this card, just adjust height and return
+        if (article.length === 0) {
+            adjustContainerHeight(eventsContent, card);
+
+            return;
+        }
+
+        // Stop any running animations on the article-container and clear the queue
+        article.stop(true, true);
+
+        if (instant) {
+            article.css({
+                display: "flex",
+                opacity: 1
+            });
+            adjustContainerHeight(eventsContent, card);
+
+            return;
+        }
+
+        // Make the article visible but transparent so it takes up space
+        article.css({
+            display: "flex",
+            opacity: 0
+        });
+
+        // Adjust container height first (with article-container taking up space but invisible)
+        adjustContainerHeight(eventsContent, card);
+
+        // Then fade in the article-container after a small delay
+        setTimeout(function () {
+            article.animate({ opacity: 1 }, 300, function () {
+                article.css("opacity", 1);
+            });
+        }, 100);
     }
 
     function updateOlderEvents(event) {

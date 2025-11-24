@@ -83,7 +83,11 @@ export default defineConfig([
             "spaced-comment": ["error", "always", { markers: ["/"] }],
 
             // 🧠 Optional: Prevent nested ternaries (too hard to read)
-            "no-nested-ternary": "error"
+            "no-nested-ternary": "error",
+
+             // ⏸️ Disabled rules
+            "no-redeclare": "off",
+            "@typescript-eslint/no-redeclare": "off"
         }
     }
 ]);
