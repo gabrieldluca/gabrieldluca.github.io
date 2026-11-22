@@ -26,6 +26,10 @@
     border-radius: 8px;
 }
 
+.card-logo {
+    display: none;
+}
+
 .card-horizontal-container {
     display: flex;
     flex-direction: row;
@@ -91,6 +95,16 @@
     width: 9rem;
 }
 
+@media (min-width: 431px) and (max-width: 667px) {
+    .card-logo {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        flex: 0 0 3rem;
+        object-fit: contain;
+    }
+}
+
 /* Responsiveness – Phones (Portrait) */
 
 @media (max-width: 430px) {
@@ -100,6 +114,39 @@
 
     .card-horizontal-container {
         gap: 2rem;
+    }
+
+    .card-logo {
+        /* Same height as .card-inner-layout (min-width 1.25% × aspect-ratio 14), and a matching width. */
+        display: block;
+        width: calc(1.25% * 14);
+        min-width: calc(1.25% * 14);
+        aspect-ratio: 1 / 1;
+        height: auto;
+        flex: 0 0 auto;
+        object-fit: contain;
+        margin-right: -0.5rem;
+    }
+}
+
+@media (max-width: 431px) {
+    #left-column-content-horizontal-container .left-column-container > .hyperlink > .card {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        min-height: 116px;
+        aspect-ratio: auto;
+    }
+}
+
+@media (max-width: 390px) {
+    .card-vertical-container {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .card-logo {
+        display: none;
     }
 }
 
