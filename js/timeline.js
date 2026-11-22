@@ -179,6 +179,10 @@ jQuery(document).ready(function ($) {
     }
 
     function showNewContent(components, timelineTotWidth, direction) {
+        if (components.eventsContent.closest(".horizontal-timeline").hasClass("animating")) {
+            return;
+        }
+
         var selectedEvent = components.eventsWrapper.find(".selected");
         var newEvent =
             direction === "next"
