@@ -673,6 +673,39 @@
     }
 }
 
+@media (max-width: 499px) {
+    .horizontal-timeline .events-content .content-horizontal-container {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas:
+            "logo company"
+            "period period";
+        align-items: center;
+        row-gap: 8px;
+    }
+
+    .horizontal-timeline .events-content .company-logo {
+        grid-area: logo;
+    }
+
+    .horizontal-timeline .events-content .content-vertical-container {
+        grid-area: company;
+        min-width: 0;
+    }
+
+    .horizontal-timeline .events-content .content-horizontal-container > .event-period {
+        grid-area: period;
+        justify-self: start;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        margin-left: 0;
+    }
+
+    .horizontal-timeline .events-content .event-period p {
+        white-space: nowrap;
+    }
+}
+
 /* Document Modal */
 
 .document-modal {
