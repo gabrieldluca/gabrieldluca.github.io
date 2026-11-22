@@ -821,3 +821,20 @@
         max-height: 90vh;
     }
 }
+
+/* Animations – Touch-first Devices */
+@media (hover: none), (pointer: coarse) {
+    .profile-picture,
+    .awards-container,
+    .card {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+
+    .profile-picture:hover,
+    .awards-container:hover,
+    .card:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
