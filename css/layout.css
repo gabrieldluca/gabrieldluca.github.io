@@ -478,6 +478,7 @@
     }
 
     .steve-quote {
+        display: none;
         margin-top: 0;
         margin-bottom: 2rem;
         width: clamp(12.5rem, 17.5rem, 22.5rem);
@@ -499,6 +500,7 @@
     }
 
     .steve-quote {
+        display: block;
         margin-left: auto;
         margin-right: auto;
     }
