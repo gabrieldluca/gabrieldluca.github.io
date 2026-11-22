@@ -140,7 +140,11 @@
 }
 
 @media (max-width: 390px) {
-    .card-vertical-container {
+    #left-column-content-horizontal-container .card-horizontal-container {
+        width: 100%;
+    }
+
+    #left-column-content-horizontal-container .card-vertical-container {
         flex: 1;
         min-width: 0;
     }
