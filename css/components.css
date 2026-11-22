@@ -585,13 +585,6 @@
         box-shadow 0.3s ease;
 }
 
-.horizontal-timeline .events-content .article-container .article-hyperlink-icon {
-    width: clamp(14px, 1vw, 1.2vw);
-    aspect-ratio: 1/1;
-    object-fit: contain;
-    margin-left: -14px;
-}
-
 .horizontal-timeline .events-content .article-container:hover .article-image {
     transform: scale(1.025);
     box-shadow: 0px 0px 16px rgba(45, 45, 47, 0.6);
@@ -674,6 +667,12 @@
 }
 
 @media (max-width: 499px) {
+    .horizontal-timeline .events-content .article-container .article-image {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@media (max-width: 599px) {
     .horizontal-timeline .events-content .content-horizontal-container {
         display: grid;
         grid-template-columns: auto minmax(0, 1fr);
